@@ -1,4 +1,4 @@
-package com.coded.minibankui.accountUI
+package com.coded.minibankui.account.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.coded.minibankui.model.Account
+import com.coded.minibankui.account.model.Account
 
 @Composable
 fun AccountCard(

@@ -1,4 +1,4 @@
-package com.coded.minibankui.model
+package com.coded.minibankui.account.model
 
 data class Account(
     val name: String,

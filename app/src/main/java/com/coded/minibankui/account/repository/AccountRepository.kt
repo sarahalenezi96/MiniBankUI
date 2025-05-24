@@ -1,6 +1,6 @@
-package com.coded.minibankui.repository
+package com.coded.minibankui.account.repository
 
-import com.coded.minibankui.model.Account
+import com.coded.minibankui.account.model.Account
 
 object AccountRepository {
     val accountsList = listOf(
