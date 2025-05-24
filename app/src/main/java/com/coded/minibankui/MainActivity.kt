@@ -9,8 +9,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.coded.minibankui.navigation.NavGraph
 import com.coded.minibankui.ui.theme.MiniBankUITheme
-import com.coded.minibankui.branch.ui.BranchNavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    BranchNavGraph(navController = navController)
+                    NavGraph(navController = navController)
                 }
             }
         }

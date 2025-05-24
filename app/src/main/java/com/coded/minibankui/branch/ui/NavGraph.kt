@@ -1,19 +1,26 @@
-package com.coded.minibankui.branch.ui
+package com.coded.minibankui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.coded.minibankui.branch.ui.BranchDetailScreen
 import com.coded.minibankui.branch.ui.BranchListScreen
 
 @Composable
-fun BranchNavGraph(navController: NavHostController) {
-    NavHost(
-        navController = navController,
-        startDestination = "branchList"
-    ) {
-        composable("branchList") {
-            BranchListScreen()
+fun NavGraph(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = "branches") {
+        composable("branches") {
+            BranchListScreen(navController)
+        }
+        composable(
+            route = "branch_detail/{branchName}",
+            arguments = listOf(navArgument("branchName") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val branchName = backStackEntry.arguments?.getString("branchName") ?: ""
+            BranchDetailScreen(branchName)
         }
     }
 }
