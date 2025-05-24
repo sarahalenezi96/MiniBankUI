@@ -12,15 +12,21 @@ import com.coded.minibankui.branch.ui.BranchListScreen
 @Composable
 fun NavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "branches") {
-        composable("branches") {
-            BranchListScreen(navController)
+        composable(route = "branches") {
+            BranchListScreen(
+                navController = navController,
+                onBranchClick = { branch ->
+                    navController.navigate("branch_detail/${branch.name}")
+                }
+            )
         }
         composable(
             route = "branch_detail/{branchName}",
             arguments = listOf(navArgument("branchName") { type = NavType.StringType })
         ) { backStackEntry ->
             val branchName = backStackEntry.arguments?.getString("branchName") ?: ""
-            BranchDetailScreen(branchName)
+            BranchDetailScreen(branchName = branchName, navController = navController)
+
         }
     }
 }

@@ -1,5 +1,9 @@
 package com.coded.minibankui.branch.ui
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,11 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.coded.minibankui.branch.model.BankBranch
 import com.coded.minibankui.branch.repository.BranchRepository
 
 @Composable
-fun BranchDetailScreen(branchName: String) {
+fun BranchDetailScreen(branchName: String, navController: NavHostController) {
     val branch: BankBranch? = BranchRepository.branches.find { it.name == branchName }
 
     if (branch == null) {
@@ -32,6 +37,15 @@ fun BranchDetailScreen(branchName: String) {
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.Start
     ) {
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = "Back",
+            modifier = Modifier
+                .clickable { navController.popBackStack() }
+                .padding(top = 32.dp)
+        )
+
+
         Text(
             text = "Branch Name: ${branch.name}",
             fontSize = 20.sp,
