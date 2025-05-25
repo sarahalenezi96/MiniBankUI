@@ -44,6 +44,16 @@ object BranchRepository {
             workingHours = WorkingHours(open = "8:30 AM", close = "4:30 PM"),
             location = "https://g.co/kgs/mGcKtLz",
             imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/salmiya_branch.png"
-    )
+    ),
+        BankBranch(
+            id = 5,
+            name = "Test",
+            type = "Branch",
+            address = "Test",
+            phone = "1801801",
+            workingHours = WorkingHours(open = "8:00 AM", close = "4:00 PM"),
+            location = "https://g.co/kgs/test",
+            imageUri = ""
+        )
     )
 }
