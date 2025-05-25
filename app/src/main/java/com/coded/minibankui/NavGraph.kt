@@ -5,15 +5,19 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.coded.minibankui.branch.model.BankBranch
 import com.coded.minibankui.branch.ui.BranchDetailScreen
 import com.coded.minibankui.branch.ui.BranchListScreen
+import com.coded.minibankui.branch.viewmodel.BranchViewModel
 
 @Composable
-fun NavGraph(
+fun AppNavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
+    val viewModel: BranchViewModel = viewModel()
+
     NavHost(
         navController = navController,
         startDestination = "branchList",
@@ -22,10 +26,7 @@ fun NavGraph(
         composable("branchList") {
             BranchListScreen(
                 navController = navController,
-                onBranchClick = { branch ->
-                    navController.currentBackStackEntry?.savedStateHandle?.set("branch", branch)
-                    navController.navigate("branchDetail")
-                }
+                viewModel = viewModel
             )
         }
 
@@ -35,7 +36,11 @@ fun NavGraph(
                 ?.get<BankBranch>("branch")
 
             if (branch != null) {
-                BranchDetailScreen(branch = branch, navController = navController)
+                BranchDetailScreen(
+                    branch = branch,
+                    navController = navController,
+                    viewModel = viewModel
+                )
             }
         }
     }

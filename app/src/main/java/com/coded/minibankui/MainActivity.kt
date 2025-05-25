@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.coded.minibankui.NavGraph
+import com.coded.minibankui.AppNavGraph
 import com.coded.minibankui.ui.theme.MiniBankUITheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavGraph(navController = navController)
+                    AppNavGraph(navController = navController)
                 }
             }
         }

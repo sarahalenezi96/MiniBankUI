@@ -19,18 +19,28 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.coded.minibankui.R
 import com.coded.minibankui.branch.model.BankBranch
+import com.coded.minibankui.branch.viewmodel.BranchViewModel
 
 @Composable
-fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
+fun BranchDetailScreen(
+    branch: BankBranch,
+    navController: NavHostController,
+    viewModel: BranchViewModel = viewModel()
+) {
     val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
+    val isFavorite = viewModel.isFavorite(branch)
+    val favIcon = if (isFavorite) R.drawable.fav else R.drawable.unfav
 
     Column(
         modifier = Modifier
@@ -50,12 +60,27 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                 .clickable { navController.popBackStack() }
         )
 
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(end = 24.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
+            Image(
+                painter = painterResource(favIcon),
+                contentDescription = "Favorite icon",
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable { viewModel.toggleFavorite(branch) }
+            )
+        }
+
         Text(
             text = "Branch Details",
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White,
-            modifier = Modifier.padding(start = 16.dp, bottom = 11.dp)
+            modifier = Modifier.padding(start = 16.dp, bottom = 12.dp)
         )
 
         AsyncImage(
@@ -87,8 +112,6 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF1B3358)
             )
-
-            Spacer(modifier = Modifier.height(2.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
@@ -136,25 +159,15 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(branch.location))
-                    context.startActivity(intent)
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent
-                ),
+                onClick = { uriHandler.openUri(branch.location) },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF041938)),
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-                    .width(220.dp)
-                    .background(
-                        brush = Brush.verticalGradient(
-                            colors = listOf(Color(0xFF041938), Color(0xFF5C89B4))
-                        ),
-                        shape = RoundedCornerShape(10.dp)
-                    )
+                    .defaultMinSize(minWidth = 200.dp),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 6.dp)
             ) {
                 Text(
                     text = "Open in Google Maps",
