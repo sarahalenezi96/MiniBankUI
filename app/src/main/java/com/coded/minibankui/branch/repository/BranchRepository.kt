@@ -6,28 +6,44 @@ import com.coded.minibankui.branch.model.WorkingHours
 object BranchRepository {
     val branches = listOf(
         BankBranch(
-            name = "Salmiya",
-            location = "Gulf Street",
-            phone = "22220000",
-            workingHours = WorkingHours("8:00 AM", "3:00 PM")
-        ),
-        BankBranch(
-            name = "Sharq",
-            location = "Al Shuhada Street",
-            phone = "11115555",
-            workingHours = WorkingHours("9:00 AM", "4:00 PM")
-        ),
-        BankBranch(
+            id = 1,
             name = "Hawally",
-            location = "Tunisia Street",
-            phone = "88883333",
-            workingHours = WorkingHours("8:30 AM", "2:30 PM")
+            type = "Branch",
+            address = "Tunisia St.",
+            phone = "1801801",
+            workingHours = WorkingHours(open = "8:30 AM", close = "3:30 PM"),
+            location = "https://g.co/kgs/iYqgzXT",
+            imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/hawally_branch.png"
         ),
         BankBranch(
+            id = 2,
+            name = "Sharq",
+            type = "Headquarters",
+            address = "Al Shuhada St.",
+            phone = "1801801",
+            workingHours = WorkingHours(open = "9:00 AM", close = "4:00 PM"),
+            location = "https://g.co/kgs/KhuUvJ8",
+            imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/sharq_hq.png"
+        ),
+        BankBranch(
+            id = 3,
             name = "Rumithiya",
-            location = "Tahir Al Baghli Street",
-            phone = "77772222",
-            workingHours = WorkingHours("10:00 AM", "5:00 PM")
-        )
+            type = "Branch",
+            address = "Muath Bin Jabal St.",
+            phone = "1801801",
+            workingHours = WorkingHours(open = "9:00 AM", close = "2:00 PM"),
+            location = "https://g.co/kgs/mbR7ocS",
+            imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/rumaithiya_branch.png"
+        ),
+        BankBranch(
+            id = 4,
+            name = "Salmiya",
+            type = "Branch",
+            address = "Salem Al Mubarak St.",
+            phone = "1801801",
+            workingHours = WorkingHours(open = "8:00 AM", close = "3:00 PM"),
+            location = "https://g.co/kgs/mGcKtLz",
+            imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/salmiya_branch.png"
+    )
     )
 }
