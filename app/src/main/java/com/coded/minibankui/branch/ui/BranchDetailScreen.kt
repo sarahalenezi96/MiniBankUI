@@ -129,6 +129,20 @@ fun BranchDetailScreen(
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
+                    painter = painterResource(R.drawable.working_hours),
+                    contentDescription = "Working hours icon",
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    text = "Working Hours: ${branch.workingHours.open} - ${branch.workingHours.close}",
+                    fontSize = 16.sp,
+                    color = Color.Black
+                )
+            }
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
                     painter = painterResource(R.drawable.phone),
                     contentDescription = "Phone icon",
                     modifier = Modifier.size(18.dp)
@@ -142,20 +156,6 @@ fun BranchDetailScreen(
                         val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${branch.phone}"))
                         context.startActivity(dialIntent)
                     }
-                )
-            }
-
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(R.drawable.working_hours),
-                    contentDescription = "Working hours icon",
-                    modifier = Modifier.size(18.dp)
-                )
-                Spacer(modifier = Modifier.width(5.dp))
-                Text(
-                    text = "Working Hours: ${branch.workingHours.open} - ${branch.workingHours.close}",
-                    fontSize = 16.sp,
-                    color = Color.Black
                 )
             }
 

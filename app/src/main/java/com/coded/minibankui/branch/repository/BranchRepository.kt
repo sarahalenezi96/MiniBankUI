@@ -11,7 +11,7 @@ object BranchRepository {
             type = "Branch",
             address = "Tunisia St.",
             phone = "1801801",
-            workingHours = WorkingHours(open = "8:30 AM", close = "3:30 PM"),
+            workingHours = WorkingHours(open = "7:30 AM", close = "3:00 PM"),
             location = "https://g.co/kgs/iYqgzXT",
             imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/hawally_branch.png"
         ),
@@ -21,7 +21,7 @@ object BranchRepository {
             type = "Headquarters",
             address = "Al Shuhada St.",
             phone = "1801801",
-            workingHours = WorkingHours(open = "9:00 AM", close = "4:00 PM"),
+            workingHours = WorkingHours(open = "7:00 AM", close = "2:30 PM"),
             location = "https://g.co/kgs/KhuUvJ8",
             imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/sharq_hq.png"
         ),
@@ -31,7 +31,7 @@ object BranchRepository {
             type = "Branch",
             address = "Muath Bin Jabal St.",
             phone = "1801801",
-            workingHours = WorkingHours(open = "9:00 AM", close = "2:00 PM"),
+            workingHours = WorkingHours(open = "9:00 AM", close = "5:00 PM"),
             location = "https://g.co/kgs/mbR7ocS",
             imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/rumaithiya_branch.png"
         ),
@@ -41,7 +41,7 @@ object BranchRepository {
             type = "Branch",
             address = "Salem Al Mubarak St.",
             phone = "1801801",
-            workingHours = WorkingHours(open = "8:00 AM", close = "3:00 PM"),
+            workingHours = WorkingHours(open = "8:30 AM", close = "4:30 PM"),
             location = "https://g.co/kgs/mGcKtLz",
             imageUri = "https://raw.githubusercontent.com/sarahalenezi96/MiniBankUI/main/branch_images/salmiya_branch.png"
     )
