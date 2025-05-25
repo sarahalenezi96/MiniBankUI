@@ -90,16 +90,16 @@ fun BranchListScreen(
             BasicTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                textStyle = TextStyle(color = Color.LightGray, fontSize = 14.sp),
+                textStyle = TextStyle(color = Color.LightGray, fontSize = 16.sp),
                 modifier = Modifier.fillMaxSize(),
                 singleLine = true
             )
             if (searchQuery.text.isEmpty()) {
-                Text("Search branches...", color = Color.Gray, fontSize = 14.sp)
+                Text("Search branches...", color = Color.Gray, fontSize = 16.sp)
             }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -116,7 +116,8 @@ fun BranchListScreen(
             ) {
                 Text(
                     text = if (sortAscending) "Sort: A-Z" else "Sort: Z-A",
-                    color = Color.Gray
+                    color = Color.Gray,
+                    fontSize = 16.sp
                 )
             }
 
@@ -156,7 +157,7 @@ fun BranchListScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
             items(sortedList) { branch ->
