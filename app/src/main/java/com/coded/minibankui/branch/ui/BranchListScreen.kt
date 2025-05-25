@@ -88,7 +88,7 @@ fun BranchListScreen(
                                 text = "${branch.name} Branch",
                                 color = Color.Red,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp
+                                fontSize = 16.sp
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(

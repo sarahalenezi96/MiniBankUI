@@ -9,8 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -68,7 +67,7 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(250.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .shadow(6.dp)
         )
@@ -80,7 +79,7 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                 .fillMaxSize()
                 .background(Color.White, shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
                 .padding(24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
                 text = "${branch.name} Branch",
@@ -89,27 +88,19 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                 color = Color(0xFF1B3358)
             )
 
+            Spacer(modifier = Modifier.height(2.dp))
+
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = painterResource(R.drawable.address),
                     contentDescription = "Address icon",
                     modifier = Modifier.size(18.dp)
                 )
-                Spacer(modifier = Modifier.width(6.dp))
+                Spacer(modifier = Modifier.width(5.dp))
                 Text(
-                    text = branch.address,
-                    fontSize = 14.sp,
+                    text = "Address: ${branch.address}",
+                    fontSize = 16.sp,
                     color = Color.Black
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = branch.location,
-                    fontSize = 14.sp,
-                    color = Color.Gray,
-                    modifier = Modifier.clickable {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(branch.location))
-                        context.startActivity(intent)
-                    }
                 )
             }
 
@@ -119,10 +110,10 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                     contentDescription = "Phone icon",
                     modifier = Modifier.size(18.dp)
                 )
-                Spacer(modifier = Modifier.width(6.dp))
+                Spacer(modifier = Modifier.width(5.dp))
                 Text(
                     text = branch.phone,
-                    fontSize = 14.sp,
+                    fontSize = 16.sp,
                     color = Color.Black,
                     modifier = Modifier.clickable {
                         val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${branch.phone}"))
@@ -137,28 +128,39 @@ fun BranchDetailScreen(branch: BankBranch, navController: NavHostController) {
                     contentDescription = "Working hours icon",
                     modifier = Modifier.size(18.dp)
                 )
-                Spacer(modifier = Modifier.width(6.dp))
+                Spacer(modifier = Modifier.width(5.dp))
                 Text(
-                    text = "${branch.workingHours.open} - ${branch.workingHours.close}",
-                    fontSize = 14.sp,
+                    text = "Working Hours: ${branch.workingHours.open} - ${branch.workingHours.close}",
+                    fontSize = 16.sp,
                     color = Color.Black
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(15.dp))
 
-            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+            Button(
+                onClick = {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(branch.location))
+                    context.startActivity(intent)
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent
+                ),
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .width(220.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(Color(0xFF041938), Color(0xFF5C89B4))
+                        ),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+            ) {
                 Text(
                     text = "Open in Google Maps",
-                    fontSize = 13.sp,
                     color = Color.White,
-                    modifier = Modifier
-                        .background(Color(0xFF1B3358), shape = RoundedCornerShape(8.dp))
-                        .padding(horizontal = 12.dp, vertical = 6.dp)
-                        .clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(branch.location))
-                            context.startActivity(intent)
-                        }
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }
